@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name='viewport' content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="mobile/jquery.mobile-1.4.5.css"/>
+	<script src="mobile/jquery.js"></script>
+	<script src="mobile/jquery.mobile-1.4.5.js"></script>
+	<link rel="manifest" href="manifest.json">
+	<style type="text/css">
+	img.ri
+	{
+		position: absolute;
+		max-width: 30%;
+		top: 10%;
+		left: 10%;
+		border-radius: 0px;
+		
+	}
+
+	img.ri:empty
+	{
+		top: 50%;
+		left: 50%;
+		-webkit-transform: translate(-50%, -50%);
+		-moz-transform: translate(-50%, -50%);
+		-ms-transform: translate(-50%, -50%);
+		-o-transform: translate(-50%, -50%);
+		transform: translate(-50%, -50%);
+	}
+
+	img.cornerImg
+	{
+		border-radius: 50%;
+	}
+
+	@media screen and (orientation: portrait) {
+	  img.ri { max-width: 30%; }
+	}
+
+	@media screen and (orientation: landscape) {
+	  img.ri { max-height: 30%; }
+	}
+	</style>
+</head>
+<body>
+
+	
+	
+	<!-- <div data-role='page' id='homepage'>
+		<div data-role='header' data-theme='b'>
+			
+			
+		</div>
+
+		<div data-role='content' data-theme='b'>
+			
+		</div>
+
+
+		<div data-role='footer' data-position='fixed' data-theme='b'>
+			<div data-role="navbar" id="navbar">
+			  <div data-role="navbar" data-iconpos="bottom">
+			    <ul>
+			      
+			      <li><a href="#menuBarang" data-icon='bullets'>Menu Barang</a></li>
+			      <li><a href="#daftarBelanja" data-icon='shop'>Daftar Belanja</a></li>
+			      <li><a href="#profile" data-icon='user'>Profile</a></li>
+			    </ul>
+			  </div>
+			</div>
+		</div>
+
+
+	</div> -->
+
+	<div data-role='page' id='menuBarang'>
+		<div data-role='header' data-theme='b'>
+			<p style="text-align: center;">Items List</p>
+			
+		</div>
+
+		<form>
+					<div data-role='content'>
+		<ul data-role="listview" data-inset="true" data-split-icon='plus'>
+			<li data-role="list-divider" style="text-align: center;">Baju</li>
+		    <li><a href = '#popup1' data-rel='popup'>
+		        <img src="assets/product_img/baju1.jpg" class="centerImg">
+		    <h2>Baju 1</h2>
+		    <p>Rp.50.000</p></a>
+			<a href="#" onclick='addToCart("baju1")'></a>
+		    </li>
+		    <li><a href="#popup1" data-rel='popup'>
+		        <img src="assets/product_img/baju2.jpg">
+		    <h2>Baju 2</h2>
+		    <p>Rp.50.000</p></a>
+			<a href="#" onclick='addToCart("baju2")'></a>
+		    </li>
+		    <li><a href="#popup1" data-rel='popup'>
+		        <img src="assets/product_img/baju3.jpg">
+		    <h2>Baju 3</h2>
+		    <p>Rp.50.000</p></a>
+			<a href="#" onclick='addToCart("baju3")'></a>
+		    </li>
+			<li data-role="list-divider" style="text-align: center;">Sneakers</li>
+			<li><a href="#popup1" data-rel='popup'>
+		        <img src="assets/product_img/sepatu1.jpg" >
+		    <h2>Sneakers 1</h2>
+		    <p>Rp.250.000</p></a>
+			<a href="#" onclick='addToCart("sepatu1")'></a>
+		    </li>
+			<li><a href="#popup1" data-rel='popup'>
+		        <img src="assets/product_img/sepatu2.jpg" >
+		    <h2>Sneakers 2</h2>
+		    <p>250.000</p></a>
+			<a href="#" onclick='addToCart("sepatu2")'></a>
+		    </li>
+			<li><a href="#popup1" data-rel='popup'>
+		        <img src="assets/product_img/sepatu3.jpg" >
+		    <h2>Sneakers 3</h2>
+		    <p>Rp.250.000</p></a>
+			<a href="#" onclick='addToCart("sepatu3")'></a>
+		    </li>
+		</ul>
+
+		
+			
+		</div>
+
+			   
+
+
+		</form>
+
+
+		<div data-role='footer' data-position='fixed' data-theme='b'>
+			<div data-role="navbar" id="navbar">
+			  <div data-role="navbar" data-iconpos="bottom">
+			    <ul>
+			      
+			      <li><a href="#menuBarang" class='ui-btn-active'data-icon='bullets'>Menu Barang</a></li>
+			      <li><a href="#daftarBelanja"  data-icon='shop'>Daftar Belanja</a></li>
+			      <li><a href="#profile" data-icon='user'>Profile</a></li>
+			    </ul>
+			  </div>
+			</div>
+		</div>
+
+
+		
+	</div>
+
+	<div data-role='page' id='daftarBelanja'>
+		<div data-role='header' data-theme='b'>
+			<p style="text-align: center;">Berikut adalah daftar belanja anda :</p>
+		</div>
+
+		<div data-role='content' id="contentDiv">
+			<div id="emptySign">
+				
+			</div>
+			<div id="historyBtn">
+				<button onclick='beli()'>Beli</button>
+				<button onclick='viewHistory()'>Belanja Sebelumnya</button>
+				
+			</div>
+
+
+			
+
+		</div>
+
+		<div data-role='footer' data-position='fixed' data-theme='b'>
+			<div data-role="navbar" id="navbar">
+			  <div data-role="navbar" data-iconpos="bottom">
+			    <ul>
+			      
+			      <li><a href="#menuBarang" data-icon='bullets'>Menu Barang</a></li>
+			      <li><a href="#daftarBelanja" class='ui-btn-active' data-icon='shop'>Daftar Belanja</a></li>
+			      <li><a href="#profile" data-icon='user'>Profile</a></li>
+			    </ul>
+			  </div>
+			</div>
+		</div>
+		
+	</div>
+
+	<div data-role='page' id='profile'>
+		<div data-role='header' data-theme='b'>
+			<p style="text-align: center;">Profile Seller</p>
+			
+		</div>
+
+		<div data-role='content'>
+			<div>
+			<h1 style="text-align: center;">Welly Winata, 26415181</h1>
+			<h1 style="text-align: center;">Felix Hartono, 26415119</h1>
+			<img src="assets/misc/profile.png" class="ri cornerImg">
+			</div>
+
+			
+		</div>
+
+		<div data-role='footer' data-position='fixed' data-theme='b'>
+			<div data-role="navbar" id="navbar">
+			  <div data-role="navbar" data-iconpos="bottom">
+			    <ul>
+			      
+			      <li><a href="#menuBarang" data-icon='bullets'>Menu Barang</a></li>
+			      <li><a href="#daftarBelanja" data-icon='shop'>Daftar Belanja</a></li>
+			      <li><a href="#profile" class='ui-btn-active' data-icon='user'>Profile</a></li>
+			    </ul>
+			  </div>
+			</div>
+		</div>
+	
+		
+	</div>
+
+	<div data-role='page' id='loginPage'>
+		<div data-role='header' data-theme='b'>
+			<p style="text-align: center;">Login / Register</p>
+		</div>
+
+		<div data-role='content'>
+			<form id='loginForm'>
+				<div id="warning">
+					<h2 style="text-align: center;">Please register first</h2>
+				</div>
+
+				<div>
+					<label for='username'>username:</label>
+				    <input type="text" name="username" id="username" value="">
+
+					<label for='password'>password:</label>
+					<input type="password" data-clear-btn="false" name="password" id="password" value="" autocomplete="off">	
+				</div>
+			    
+
+				<div id="buttonDivLogin">
+					<button id="registerButton" onclick="register()">Register</button>	
+				</div>
+				
+				
+			</form>
+			
+		</div>
+
+		<div data-role='footer' data-position='fixed' data-theme='b'>
+			<div data-role="navbar" id="navbar">
+			  <div data-role="navbar" data-iconpos="bottom">
+			    <ul>
+			      
+			      <li><a href="#menuBarang" data-icon='bullets'>Menu Barang</a></li>
+			      <li><a href="#daftarBelanja" data-icon='shop'>Daftar Belanja</a></li>
+			      <li><a href="#profile" class='ui-btn-active' data-icon='user'>Profile</a></li>
+			    </ul>
+			  </div>
+			</div>
+		</div>
+		
+	</div>
+
+
+
+
+<script type="text/javascript">
+	var data = [];
+	var shoppingList = [];
+	var shoppingListHistory = [];
+	function addToCart(item){
+		var r = confirm('tambahkan '+item+' ke keranjang ?');
+		if(r == true){
+			shoppingList.push(item);
+			showlist();
+
+		}
+	}
+
+	function showlist(){
+		if(jQuery.isEmptyObject(shoppingList) == true){
+			$("#emptySign").html('<img src="assets/misc/sad.png" class="ri"><br><h1 style="text-align:center">Sedang dalam perbaikan </h1>')
+
+		}
+		else{
+
+			var template = '';
+			//$("#emptySign").html('');
+			template = '<ul id="listviewBelanja" data-role="listview" data-split-icon="gear" data-split-theme="a" data-inset="true">';
+			for(var i = 0 ; i < shoppingList.length ; i ++){
+
+				template = template + `<li> <a href='#'> <img src='assets/product_img/${shoppingList[i]}.jpg'><h2>${shoppingList[i]}</h2><p>Rp.50.000</p></a></li>`;
+
+
+				//$("#emptySign").append('<li><a href="#"> <img src="assets/product_img/'+shoppingList[i]+'.jpg"><h2>'+shoppingList[i]+'</h2><p>Rp.50.000</p></a><a href="#"></a></li>');
+				
+			}
+			template = template + "</ul>";
+			$('#emptySign').html(template);
+			$('#listviewBelanja').listview().listview('refresh');
+			//$("#emptySign").html('<img src="assets/misc/sad.png" class="ri"><br><h1 style="text-align:center">Sedang dalam perbaikan</h1>')
+
+			
+			/*
+			<li><a href="#">
+		        <img src="assets/product_img/baju1.jpg" class="centerImg">
+		    <h2>Baju 1</h2>
+		    <p>Rp.50.000</p></a>
+			<a href="#" onclick='addToCart("baju1")'></a>
+		    </li>
+			*/
+
+
+		
+			
+			
+		}
+		
+		
+	}
+
+	function beli(){
+		if(shoppingList.length == 0){
+			alert("Keranjang Belanja Masih Kosong !");
+			return;
+		}
+		shoppingListHistory = shoppingListHistory.concat(shoppingList);
+		shoppingList = [];
+		alert('Terima Kasih, Klik Belanja Sebelumnya untuk melihat history !');
+		$('#emptySign').html('');
+
+	}
+
+	function viewHistory(){
+		var template = '<h1 style="text-align:center;">History Belanja</h1>';
+		//$("#emptySign").html('');
+		template += '<ul id="listviewBelanja" data-role="listview" data-split-icon="gear" data-split-theme="a" data-inset="true">';
+		for(var i = 0 ; i < shoppingListHistory.length ; i ++){
+
+			template = template + `<li> <a href='#'> <img src='assets/product_img/${shoppingListHistory[i]}.jpg'><h2>${shoppingListHistory[i]}</h2><p>Rp.50.000</p></a></li>`;
+
+
+			//$("#emptySign").append('<li><a href="#"> <img src="assets/product_img/'+shoppingList[i]+'.jpg"><h2>'+shoppingList[i]+'</h2><p>Rp.50.000</p></a><a href="#"></a></li>');
+			
+		}
+		template = template + "</ul>";
+		$('#emptySign').html(template);
+		$('#listviewBelanja').listview().listview('refresh');
+		//$("#emptySign").html('<img src="assets/misc/sad.png" class="ri"><br><h1 style="text-align:center">Sedang dalam perbaikan</h1>')
+
+		
+		/*
+		<li><a href="#">
+	        <img src="assets/product_img/baju1.jpg" class="centerImg">
+	    <h2>Baju 1</h2>
+	    <p>Rp.50.000</p></a>
+		<a href="#" onclick='addToCart("baju1")'></a>
+	    </li>
+		*/
+
+	}
+
+	function register(){
+		data = [$('#username').val() , $('#password').val()];
+		
+		$("#warning").html('<h2 style="text-align: center;">Data added, Please login</h2>');
+		$("#buttonDivLogin").html('<button id="loginButton" onclick="login()">Login</button>')
+		$("#username").val('');
+		$("#password").val('');
+		
+
+	}
+
+	function login(){
+		if(data[0] == $("#username").val() && data[1] == $("#password").val())
+		{
+			$("#loginForm").html('<h2 style="text-align:center;">Selamat Datang,'+data[0]+'</h2>')
+		}
+		else{
+			alert('Username/Password anda salah !');
+		}
+	}
+
+
+	
+</script>
+<script src="app.js"></script>
+</body>
+</html>
