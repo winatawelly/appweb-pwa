@@ -1,8 +1,8 @@
 {   "name": "ECommerce",
     "short_name": "ECommerce",
     "orientation": "portrait",
-    "theme_color": "#2196f3",
-    "background_color": "#2196f3",
+    "theme_color": "#5FAAE5",
+    "background_color": "#ccc",
     "display": "standalone",
     "start_url": ".",
     "icons": [
